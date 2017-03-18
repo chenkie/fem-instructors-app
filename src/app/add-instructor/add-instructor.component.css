@@ -1,0 +1,15 @@
+.course {
+  margin-right: 5px;
+}
+
+.courses {
+  margin-bottom: 10px;
+}
+
+.remove-course {
+  cursor: pointer;
+}
+
+.submit-area {
+  margin-top: 15px;
+}

@@ -1,0 +1,8 @@
+<ul class="list-group">
+  <a 
+    [routerLink]="['instructors', instructor?.slug]"
+    class="list-group-item"
+    *ngFor="let instructor of instructors">
+      {{ instructor?.name }}
+  </a>
+</ul>

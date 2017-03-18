@@ -1,0 +1,8 @@
+<h3>{{ instructor?.name }}</h3>
+<h5><i class="fa fa-envelope"></i> {{ instructor?.email }}</h5>
+<h5><i class="fa fa-twitter"></i> {{ instructor?.twitter }}</h5>
+<hr>
+<h4>Courses</h4>
+<ul>
+  <li *ngFor="let course of instructor?.courses">{{ course }}</li>
+</ul>
