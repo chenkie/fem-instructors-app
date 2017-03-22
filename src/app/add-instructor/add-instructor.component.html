@@ -1,3 +1,11 @@
+<div class="alert alert-success" *ngIf="submitSuccess">
+  Instructor Added!
+</div>
+
+<div class="alert alert-danger" *ngIf="submitError">
+  Error: {{ formatError(submitError?.message) }}
+</div>
+
 <form #newInstructorForm="ngForm" (ngSubmit)="onInstructorSubmit(newInstructorForm.value)">
   <div class="form-group">
     <label for="name">Name</label>
@@ -6,6 +14,10 @@
   <div class="form-group">
     <label for="name">Email</label>
     <input type="email" class="form-control" id="email" placeholder="Email address" name="email" ngModel>
+  </div>
+  <div class="form-group">
+    <label for="name">Github</label>
+    <input type="text" class="form-control" id="github" placeholder="Github username" name="github" ngModel>
   </div>
   <div class="form-group">
     <label for="name">Twitter</label>

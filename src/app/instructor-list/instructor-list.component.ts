@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
-import { InstructorService } from './../instructor.service';
-import 'rxjs/add/operator/map';
+import { InstructorService } from './../instructor/instructor.service';
+import { Instructor } from './../instructor/instructor';
 
 @Component({
   selector: 'app-instructor-list',
@@ -10,19 +10,25 @@ import 'rxjs/add/operator/map';
 })
 export class InstructorListComponent implements OnInit {
 
-  instructors;
+  instructors: Array<Instructor>;
+  loading: boolean = true;
 
-  constructor(public http: Http, public instructor: InstructorService) { }
+  constructor(public http: Http, public instructorService: InstructorService) { }
 
   ngOnInit() {
-    this.http.get('assets/data/instructors.json')
-      .map(res => res.json())
+    this.instructorService.getAllInstructors()
       .subscribe(
-        data => this.instructors = data,
-        err => console.log(err)
+        data => {
+          this.instructors = data;
+          this.loading = false;
+        },
+        err => {
+          console.log(err);
+          this.loading = false;
+        }
       );
 
-    this.instructor.instructorChange$.subscribe(
+    this.instructorService.instructorChange$.subscribe(
       instructor => this.instructors.push(instructor)
     );
   }

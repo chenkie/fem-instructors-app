@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { InstructorService } from './../instructor.service';
+import { InstructorService } from './../instructor/instructor.service';
 
 @Component({
   selector: 'app-add-instructor',
@@ -13,32 +13,51 @@ export class AddInstructorComponent implements OnInit {
   @ViewChild('addCourseForm') addCourseForm;
 
   courses: Array<string> = [];
+  submitSuccess: boolean = false;
+  submitError: string;
 
-  constructor(public router: Router, public instructor: InstructorService) { }
+  constructor(public router: Router, public instructorService: InstructorService) { }
 
   ngOnInit() {
   }
 
-  onAddCourseSubmit(course) {
-    this.courses.push(course);
-    this.addCourseForm.reset();
+  onAddCourseSubmit(course): void {
+    if (course) {
+      this.courses.push(course);
+      this.addCourseForm.reset();
+    }
   }
 
-  removeCourse(course) {
+  removeCourse(course): void {
     const index = this.courses.indexOf(course);
     this.courses.splice(index, 1);
   }
 
-  onInstructorSubmit(data) {
+  onInstructorSubmit(data): void {
     data.courses = this.courses;
-    this.newInstructorForm.reset();
-    this.instructor.addInstructor(data);
+    this.instructorService.addInstructor(data)
+      .subscribe(
+        data => {
+          this.instructorService.observer.next(data);
+          this.newInstructorForm.reset();
+          this.courses.splice(0);
+          this.submitSuccess = true;
+        },
+        err => {
+          this.submitError = err.json();
+        }
+      );
   }
 
-  cancel() {
+  cancel(): void {
     this.addCourseForm.reset();
     this.newInstructorForm.reset();
     this.router.navigate(['']);
+  }
+
+  formatError(error): string {
+    // naive formatting, not prod ready
+    return error.replace('[', '').replace(']', '');
   }
 
 }

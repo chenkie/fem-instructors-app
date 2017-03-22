@@ -12,7 +12,7 @@ import { ROUTES } from './app.routes';
 import { HomeComponent } from './home/home.component';
 import { AddInstructorComponent } from './add-instructor/add-instructor.component';
 
-import { InstructorService } from './instructor.service';
+import { InstructorService } from './instructor/instructor.service';
 
 @NgModule({
   declarations: [

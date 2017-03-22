@@ -1,8 +1,19 @@
-<h3>{{ instructor?.name }}</h3>
-<h5><i class="fa fa-envelope"></i> {{ instructor?.email }}</h5>
-<h5><i class="fa fa-twitter"></i> {{ instructor?.twitter }}</h5>
-<hr>
-<h4>Courses</h4>
-<ul>
-  <li *ngFor="let course of instructor?.courses">{{ course }}</li>
-</ul>
+<div *ngIf="!loading">
+  <img [src]="instructor?.avatar" alt="avatar" class="img-circle">
+  <h3>{{ instructor?.name }}</h3>
+  <h5><i class="fa fa-envelope"></i> {{ instructor?.email }}</h5>
+  <h5 *ngIf="instructor?.github"><i class="fa fa-github"></i> {{ instructor?.github }}</h5>
+  <h5 *ngIf="instructor?.twitter"><i class="fa fa-twitter"></i> {{ instructor?.twitter }}</h5>
+  <div *ngIf="instructor?.courses.length">
+    <hr>
+    <h4>Courses</h4>
+    <ul>
+      <li *ngFor="let course of instructor?.courses">{{ course }}</li>
+    </ul>
+  </div>
+</div>
+
+<div class="spinner" *ngIf="loading">
+  <i class="fa fa-spinner fa-spin"></i>
+</div>
+

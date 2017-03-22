@@ -1,8 +1,7 @@
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { InstructorService } from './../instructor.service';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/filter';
+import { InstructorService } from './../instructor/instructor.service';
+import { Instructor } from './../instructor/instructor';
 
 @Component({
   selector: 'app-instructor-detail',
@@ -11,18 +10,25 @@ import 'rxjs/add/operator/filter';
 })
 export class InstructorDetailComponent implements OnInit {
 
-  instructor: any = {};
+  instructor: Instructor;
+  loading: boolean = false;
 
   constructor(public route: ActivatedRoute, public instructorService: InstructorService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.instructorService.getInstructors()
+      this.loading = true;
+      const instructorSlug = params['slug'];
+      this.instructorService.getInstructor(instructorSlug)
         .subscribe(
-          data => { 
-            this.instructor = data.filter(instructor => instructor.slug === params['slug'])[0];
+          data => {
+            this.instructor = data;
+            this.loading = false;
           },
-          err => console.log(err)
+          err => {
+            console.log(err);
+            this.loading = false;
+          }
         );
     })
   }
