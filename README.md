@@ -1,27 +1,37 @@
-# FemInstructorsApp
+# Front End Masters Instructors App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-beta.32.3.
+## What's This?
 
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+This is the front end app that accompanies the [Hapi.js API](https://github.com/chenkie/fem-instructors-api) which gets built in my Getting Started with Hapi.js workshop at [Front End Masters](https://frontendmasters.com/). It provides a simple UI for fetching a list of instructors, drilling into the details of a single instructor, and also adding a new instructor.
 
-## Code scaffolding
+## Getting Started
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
+To get started, clone the repo.
 
-## Build
+```bash
+git clone https://github.com/chenkie/fem-instructors-app.git
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Make sure you have Node.js and npm installed and then install the Angular CLI.
 
-## Running unit tests
+```bash
+npm install -g @angular/cli
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Install the dependencies for the application.
 
-## Running end-to-end tests
+```bash
+npm install
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+Run the app using the Angular CLI.
 
-## Further help
+```bash
+ng serve
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+The app will be served at `http://localhost:4200`.
+
+## License
+
+MIT
