@@ -11,11 +11,11 @@ import { Instructor } from './../instructor/instructor';
 export class InstructorDetailComponent implements OnInit {
 
   instructor: Instructor;
-  loading: boolean = false;
+  loading = false;
 
   constructor(public route: ActivatedRoute, public instructorService: InstructorService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.loading = true;
       const instructorSlug = params['slug'];
@@ -30,7 +30,7 @@ export class InstructorDetailComponent implements OnInit {
             this.loading = false;
           }
         );
-    })
+    });
   }
 
 }

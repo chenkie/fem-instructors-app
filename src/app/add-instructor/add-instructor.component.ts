@@ -13,7 +13,7 @@ export class AddInstructorComponent implements OnInit {
   @ViewChild('addCourseForm') addCourseForm;
 
   courses: Array<string> = [];
-  submitSuccess: boolean = false;
+  submitSuccess = false;
   submitError: string;
 
   constructor(public router: Router, public instructorService: InstructorService) { }
@@ -33,9 +33,9 @@ export class AddInstructorComponent implements OnInit {
     this.courses.splice(index, 1);
   }
 
-  onInstructorSubmit(data): void {
-    data.courses = this.courses;
-    this.instructorService.addInstructor(data)
+  onInstructorSubmit(instructor): void {
+    instructor.courses = this.courses;
+    this.instructorService.addInstructor(instructor)
       .subscribe(
         data => {
           this.instructorService.observer.next(data);

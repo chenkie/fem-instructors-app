@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { Observable, Observer } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs/Observer';
 import 'rxjs/add/operator/map';
 import { API_URL_DEV } from './../app.contants';
 import { Instructor } from './../instructor/instructor';
@@ -21,7 +22,7 @@ export class InstructorService {
     return this.http.get(`${API_URL_DEV}/instructors`).map(res => res.json());
   }
 
-  addInstructor(instructor: any) {
+  addInstructor(instructor: any): Observable<any> {
     return this.http.post(`${API_URL_DEV}/instructors`, instructor).map(res => res.json());
   }
 

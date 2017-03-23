@@ -11,11 +11,11 @@ import { Instructor } from './../instructor/instructor';
 export class InstructorListComponent implements OnInit {
 
   instructors: Array<Instructor>;
-  loading: boolean = true;
+  loading = true;
 
   constructor(public http: Http, public instructorService: InstructorService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.instructorService.getAllInstructors()
       .subscribe(
         data => {
