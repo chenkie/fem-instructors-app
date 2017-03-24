@@ -15,15 +15,19 @@ export class InstructorService {
   constructor(public http: Http) { }
 
   getInstructor(slug: string): Observable<Instructor> {
-    return this.http.get(`${API_URL_DEV}/instructors/${slug}`).map(res => res.json());
+    return this.http.get(`${API_URL_DEV}/instructors/${slug}`)
+      .map(res => res.json());
   }
 
   getAllInstructors(): Observable<Array<Instructor>> {
-    return this.http.get(`${API_URL_DEV}/instructors`).map(res => res.json());
+    return this.http
+      .get(`${API_URL_DEV}/instructors?sortKey=id&sortDirection=asc`)
+      .map(res => res.json());
   }
 
   addInstructor(instructor: any): Observable<any> {
-    return this.http.post(`${API_URL_DEV}/instructors`, instructor).map(res => res.json());
+    return this.http.post(`${API_URL_DEV}/instructors`, instructor)
+      .map(res => res.json());
   }
 
 }
