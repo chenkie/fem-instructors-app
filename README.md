@@ -2,7 +2,7 @@
 
 ## What's This?
 
-This is the front end app that accompanies the [Hapi.js API](https://github.com/chenkie/fem-instructors-api) which gets built in my Getting Started with Hapi.js workshop at [Front End Masters](https://frontendmasters.com/). It provides a simple UI for fetching a list of instructors, drilling into the details of a single instructor, and also adding a new instructor.
+This is the front end app that accompanies the [Hapi.js API](https://github.com/chenkie/fem-instructors-api) which gets built in my Getting Started with Hapi.js workshop at [Front End Masters](https://frontendmasters.com/). It provides a simple UI for fetching a list of instructors, drilling into the details of a single instructor, and also adding a new instructorthat helps you to become a professional deleloper in future.
 
 ## Getting Started
 
